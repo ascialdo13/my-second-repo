@@ -1,0 +1,84 @@
+:root {
+  --ink: #26213a;
+  --muted: #756f88;
+  --cream: #fffaf1;
+  --pink: #ff6f91;
+  --coral: #ff9270;
+  --yellow: #ffd86b;
+  --purple: #8b73e6;
+  --shadow: 0 22px 65px rgba(67, 41, 87, .15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body::before, body::after {
+  position: fixed;
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  content: "";
+  filter: blur(2px);
+}
+
+body::before { top: -125px; left: -100px; background: #ffe29a; }
+body::after { right: -145px; bottom: -120px; background: #ffc4d6; }
+
+.app-shell { width: min(100% - 40px, 680px); margin: 0 auto; padding: 76px 0 34px; }
+
+.hero { text-align: center; }
+.eyebrow { color: var(--purple); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.sparkle { display: inline-block; margin-right: 5px; color: var(--pink); font-size: 1.1rem; }
+h1 { margin: 19px 0 13px; font-family: Fraunces, Georgia, serif; font-size: clamp(3.15rem, 8vw, 5.2rem); font-weight: 700; letter-spacing: -.065em; line-height: .96; }
+h1 em { color: var(--pink); font-style: normal; }
+.intro { margin: 0 auto 38px; color: var(--muted); font-size: 1.05rem; }
+
+.generator-card {
+  position: relative;
+  min-height: 430px;
+  padding: 27px clamp(24px, 7vw, 55px) 28px;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 32px;
+  background: rgba(255,255,255,.69);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.card-topline { display: flex; align-items: center; justify-content: space-between; color: var(--purple); font-size: .7rem; font-weight: 700; letter-spacing: .17em; }
+.icon-button { display: grid; width: 35px; height: 35px; padding: 0; place-items: center; border: 0; border-radius: 50%; color: var(--ink); background: #fff; font-size: 1.2rem; cursor: pointer; transition: transform .2s, background .2s; }
+.icon-button:hover { background: var(--yellow); transform: rotate(12deg); }
+
+.word-stage { position: relative; display: grid; min-height: 175px; place-items: center; margin: 5px 0 0; overflow: hidden; }
+.word { position: relative; z-index: 1; font-family: Fraunces, Georgia, serif; font-size: clamp(3.6rem, 13vw, 7.2rem); letter-spacing: -.07em; line-height: 1; animation: pop .45s ease both; }
+.word-orbit { position: absolute; border-radius: 50%; border: 1px solid rgba(139,115,230,.22); transform: rotate(-20deg); }
+.orbit-one { width: 270px; height: 112px; }
+.orbit-two { width: 210px; height: 150px; border-color: rgba(255,111,145,.2); transform: rotate(35deg); }
+.definition { min-height: 47px; max-width: 490px; margin: 2px auto 28px; color: var(--muted); font-family: Fraunces, Georgia, serif; font-size: 1.05rem; line-height: 1.45; }
+
+.generate-button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 17px 20px 17px 24px; border: 0; border-radius: 18px; color: #fff; background: var(--ink); font: 700 1rem "DM Sans", sans-serif; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+.generate-button:hover { background: var(--purple); box-shadow: 0 10px 24px rgba(139,115,230,.3); transform: translateY(-2px); }
+.generate-button:active { transform: translateY(1px); }
+.button-arrow { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; color: var(--ink); background: var(--yellow); font-size: 1.35rem; }
+.status { min-height: 18px; margin: 10px 0 -8px; color: var(--purple); font-size: .78rem; }
+.footer-note { margin-top: 24px; color: var(--muted); font-size: .78rem; text-align: center; }
+.dot { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: var(--coral); }
+
+@keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (max-width: 520px) {
+  .app-shell { padding-top: 48px; }
+  .intro { margin-bottom: 28px; }
+  .generator-card { min-height: 400px; border-radius: 25px; }
+  .word-stage { min-height: 150px; }
+  .word { font-size: clamp(3.25rem, 16vw, 5rem); }
+}
